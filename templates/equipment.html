@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Дополнительное оборудование</title>
+{% endblock %}
+
+{% block body %}
+<h1>Дополнительное оборудование</h1><br/>
+    {% for eq in equipment %}
+    <div class="alert alert-light">
+        <h4>{{eq.equipment_name}}</h4>
+        <p>{{eq.description}}</p>
+        <p><b>Цена: {{eq.cost}} руб/час</b></p>
+        <a class="me-3 py-2 btn btn-outline-success" href="/booking">Забронировать</a>
+    </div>  
+     <br> <br>   
+     {% endfor %}   
+{% endblock %}

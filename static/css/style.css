@@ -1,0 +1,12 @@
+.custom-carousel {
+    width: 50%; 
+    height: 50%; 
+}
+
+.carousel-inner .carousel-item img {
+    width: 80%;
+    height: 95%;
+    object-fit: cover; 
+}
+
+

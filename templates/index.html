@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Главная страница</title>
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+    <h1 style="text-align: center;"> Shine Studio</h1>
+    <p style="text-align: center;">Локация для творчества, креатива, встречи и соединения заряженных людей на раскрытие своего творческого потенциала.<br/>
+        В нашей студии имеется 3 просторных интерьерных зала, а также большой выбор светового оборудования, при помощи <br/>которого вы сможете 
+        воплотить в реальность все свои самые смелые и креативные идеи для фотосъёмки и видеосъёмки.
+    </p><br/>
+
+    <div id="multi-item-carousel" class="carousel slide" data-ride="carousel" width="50" height="50">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="{{ url_for('static', filename='images/room_1_1.jpg') }}" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{{ url_for('static', filename='images/room_1_2.jpg') }}" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{{ url_for('static', filename='images/room_1_3.jpg') }}" class="d-block w-100" alt="Image 3">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="{{ url_for('static', filename='images/room_2_1.jpg') }}" class="d-block w-100" alt="Image 4">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{{ url_for('static', filename='images/room_2_4.jpg') }}" class="d-block w-100" alt="Image 5">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{{ url_for('static', filename='images/room_2_5.jpg') }}" class="d-block w-100" alt="Image 6">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#multi-item-carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only"></span>
+        </a>
+        <a class="carousel-control-next" href="#multi-item-carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only"></span>
+        </a>
+    </div>
+
+    <h4 style="text-align: center;">О нас</h4>
+    <p style="text-align: center;">В студии имеется 3 просторных зала со множеством различного оборудования и реквизита.</br>
+        При необходимости можно забронировать дополнительное оборудование, с расчётом одно оборудование на 1 зал.</br>
+        Также в каждом зале имеется отдельное гримёрное место с большим зеркалом, феном для волос, выпрямителем для </br>
+        волос, пульверизатором, отпаривателем и рейлом для одежды. Аренда данного места включена в стоимость зала.</p><br/>
+
+    <h4 style="text-align: center;">Скидки и акции</h4>
+    <p style="text-align: center;">Дарим скидку 15% на аренду залов в честь Вашего Дня Рождения! Скидка действует 7 дней до и после дня рождения.</br>
+        При бронировании стоимость заказа формируется по стандартным ценам и пересчитывается уже при оплате в студии.
+    <h6 style="text-align: center;">Для вас мы бесплатно предоставим:</h6>
+        <p style="text-align: center;">праздничные бокалы</br> 
+        проектор</br>
+        гирлянду из шариков «happy birthday»</p><br/>
+
+    <h4 style="text-align: center;">Наше оборудование</h4><br/>
+    <div id="multi-item-carousel" class="carousel slide" data-ride="carousel" width="50" height="50">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="{{ url_for('static', filename='images/equipment_1.jpg') }}" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{{ url_for('static', filename='images/equipment_4.jpg') }}" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{{ url_for('static', filename='images/equipment_3.jpg') }}" class="d-block w-100" alt="Image 3">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="{{ url_for('static', filename='images/equipment_6.jpg') }}" class="d-block w-100" alt="Image 4">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{{ url_for('static', filename='images/equipment_5.jpg') }}" class="d-block w-100" alt="Image 5">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{{ url_for('static', filename='images/equipment_2.jpg') }}" class="d-block w-100" alt="Image 6">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="{{ url_for('static', filename='images/equipment_7.jpg') }}" class="d-block w-100" alt="Image 4">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{{ url_for('static', filename='images/equipment_8.jpg') }}" class="d-block w-100" alt="Image 5">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{{ url_for('static', filename='images/equipment_9.jpeg') }}" class="d-block w-100" alt="Image 6">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#multi-item-carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only"></span>
+        </a>
+        <a class="carousel-control-next" href="#multi-item-carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only"></span>
+        </a>
+        <a class="carousel-control-next" href="#multi-item-carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only"></span>
+        </a>
+    </div><br/>
+
+    <h4>Пропускная система</h4>
+    <ul type="disc">
+        <li>При бронировании Вы вводите свои личные данные, по которым оформляется пропуск;
+        <li>Вам необходимо иметь с собой паспорт или другой документ удостоверяющий личность;</li> 
+        <li>На проходном пункте Вы предъявляете документы, и Вас пропускают в бизнес центр;</li>
+        <li>При возникновении сложностей Вы можете обратиться к администратору фотостудии.</li>    
+    </ul><br>
+    <h4>Как добраться</h4>
+    <ul type="disc">
+        <li>Вход находится со стороны Кожевнической улицы 11/13 строение 2;</li>
+        <li>Пройти через черные ворота;</li>
+        <li>Обойти большое здание с правой стороны через черную калитку;</li>
+        <li>На территории идти прямо до центрального входа в бизнес центр «Кошелев»;</li>   
+        <li>Зайдя в бизнес центр, пройти через проходной пункт;</li>
+        <li>На лифте или по лестнице подняться на 5 этаж;</li>
+        <li>От лифта/лестницы повернуть направо, 1 минуту идти прямо по коридору;</li>
+        <li>По правую сторону будет дверь с вывеской с названием студии</li>
+    </ul><br/>
+
+    <h4 style=>Расположение на карте</h4><br/>
+</div>
+<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Abc0df57d03dec3682e03b1e25474023c3dd621e1a2222338c2e933899b9a6906&amp;width=100%25&amp;height=300&amp;lang=ru_RU&amp;scroll=true"></script>
+{% endblock %}
+

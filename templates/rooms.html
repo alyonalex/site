@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Залы</title>
+{% endblock %}
+
+{% block body %}
+<h1>Наши залы</h1><br/>  
+    {% for room in rooms %}
+    <div class="alert alert-light">
+        <h4>{{room.room_name}}</h4>
+        <p>{{room.description}}</p>
+        <p><b>Цена: {{room.cost}} руб/час</b></p>
+        <a class="me-3 py-2 btn btn-outline-success" href="/booking">Забронировать</a>
+    </div>  
+     <br> <br>   
+     {% endfor %}   
+{% endblock %}

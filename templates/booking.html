@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Бронирование Shine Studio</title>
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+    <h1>Бронирование зала и оборудования в Shine Studio</h1>
+    <form action="{{ url_for('booking') }}" method="POST">
+        
+        <label for="room">Выберите зал:</label>
+        <select id="room" name="room" required onchange="updateTotalCost()">
+            {% for room in rooms %}
+                <option value="{{ room.room_id }}" data-cost="{{ room.cost }}">{{ room.room_name }}</option>
+            {% endfor %}
+        </select><br><br/>
+
+        <label for="equipment">Выберите оборудование:</label><br/>
+        <select id="equipment" name="equipment" multiple onchange="updateTotalCost()">
+            {% for equip in equipment %}
+                <option value="{{ equip.equipment_id }}" data-cost="{{ equip.cost }}">{{ equip.equipment_name }}</option>
+            {% endfor %}
+        </select><br/><br/>
+
+        <label for="day">Выберите желаемую дату:</label>
+        <input type="date" id="day" name="day" value="{{ now }}" min="{{ now }}" required onchange="updateAvailableTimes()"><br><br/>
+
+        <label for="time">Выберите желаемое ремя:</label>
+        <select id="time" name="time" required onchange="updateTotalCost()">
+            {% for time in available_times %}
+                <option value="{{ time }}">{{ time }}</option>
+            {% endfor %}
+        </select><br><br/>
+
+        <label for="duration">Выберите продолжительность бронирования (часов):</label>
+        <input type="number" id="duration" name="duration" min="1" max="5" value="1" required onchange="updateAvailableTimes(); updateTotalCost()"><br><br/>
+
+        <label><b>Заполните персональные данные:</b></label><br><br>
+        <input type="text" name="client_name" id="client_name" required class="form-control" placeholder="Имя"><br/>
+        <input type="text" name="client_surname" id="client_surname" required class="form-control" placeholder="Фамилия"><br/>
+        <input type="text" name="phone_number" id="phone_number" required class="form-control" placeholder="Номер телефона"><br/>
+        <input type="text" name="email" id="email" required class="form-control" placeholder="E-mail:"><br/>
+
+        <label for="total_cost">Итоговая сумма закза:</label>
+        <span id="total_cost">0</span> руб.<br/> Оплата заказа осуществляется на месте<br><br/>
+
+        <input type="submit" value="Забронировать">
+    </form>
+</div>
+
+<script>
+    function updateAvailableTimes() {
+        const selectedDate = document.getElementById('day').value;
+        const duration = document.getElementById('duration').value;
+        fetch(`/available_times?day=${selectedDate}&duration=${duration}`)
+            .then(response => response.json())
+            .then(data => {
+                const timeSelect = document.getElementById('time');
+                timeSelect.innerHTML = '';
+                data.available_times.forEach(time => {
+                    const option = document.createElement('option');
+                    option.value = time;
+                    option.textContent = time;
+                    timeSelect.appendChild(option);
+                });
+                updateTotalCost(); // обновляем стоимость при изменении доступного времени
+            });
+    }
+
+    function updateTotalCost() {
+        const roomSelect = document.getElementById('room');
+        const equipmentSelect = document.getElementById('equipment');
+        const duration = document.getElementById('duration').value;
+
+        const roomCost = roomSelect.options[roomSelect.selectedIndex].getAttribute('data-cost');
+        let totalCost = roomCost * duration;
+
+        for (let i = 0; i < equipmentSelect.selectedOptions.length; i++) {
+            const equipmentCost = equipmentSelect.selectedOptions[i].getAttribute('data-cost');
+            totalCost += equipmentCost * duration;
+        }
+
+        document.getElementById('total_cost').innerText = totalCost;
+    }
+
+    document.getElementById('day').addEventListener('change', updateAvailableTimes);
+    document.getElementById('duration').addEventListener('change', updateAvailableTimes);
+</script>
+{% endblock %}
