@@ -9,4 +9,7 @@
     object-fit: cover; 
 }
 
+h4, h5, h6 {
+    color: rgb(103, 94, 82);
+}
 
